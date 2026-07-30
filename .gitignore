@@ -1,0 +1,30 @@
+# Gleam build output
+*.beam
+*.ez
+/build
+erl_crash.dump
+
+# Local-only project management — never publish
+/docs/
+AGENTS.md
+CLAUDE.md
+.claude/
+.codex/
+.grok/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*~
+*.swp
+*.swo
+.vs/
+.idea/
+*.user
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key

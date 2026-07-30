@@ -1,0 +1,8 @@
+* text=auto eol=lf
+
+*.gleam text eol=lf
+*.toml text eol=lf
+*.md text eol=lf
+
+*.beam binary
+*.ez binary

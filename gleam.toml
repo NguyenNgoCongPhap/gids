@@ -1,0 +1,16 @@
+name = "gids"
+version = "0.1.0"
+gleam = ">= 1.4.0"
+# The library is pure Gleam and builds for both targets; JavaScript matches its
+# frontend consumers.
+target = "javascript"
+licences = ["MIT"]
+description = "Opaque Gleam brands for structural entity identifiers crossing typed wire DTOs."
+
+repository = { type = "github", user = "NguyenNgoCongPhap", repo = "gids" }
+
+[dependencies]
+gleam_stdlib = ">= 0.44.0 and < 2.0.0"
+
+[dev-dependencies]
+gleeunit = ">= 1.0.0 and < 2.0.0"
