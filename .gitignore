@@ -5,7 +5,8 @@
 erl_crash.dump
 
 # Local-only project management — never publish
-/docs/
+/docs/*
+!/docs/CATALOG.md
 AGENTS.md
 CLAUDE.md
 .claude/
