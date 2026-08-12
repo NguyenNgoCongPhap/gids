@@ -1,11 +1,18 @@
 // SPDX-License-Identifier: MIT
 // Copyright (c) 2026 Cong Phap
 
+import gids/annotation_id
+import gids/batch_operation_id
 import gids/combo_name
 import gids/data_key
+import gids/definition_id
+import gids/detail_instance_id
+import gids/entity_id
 import gids/etabs_object_name
+import gids/frame_id
 import gids/frame_name
 import gids/group_name
+import gids/host_entity_id
 import gids/joint_name
 import gids/load_case_id
 import gids/material_id
@@ -14,8 +21,13 @@ import gids/member_part_id
 import gids/mode_index
 import gids/node_id
 import gids/operation_id
+import gids/parameter_name
+import gids/part_instance_id
+import gids/port_name
+import gids/render_profile_id
 import gids/sap_object_name
 import gids/section_id
+import gids/weld_spec_id
 import gleam/order
 import gleeunit
 import gleeunit/should
@@ -85,6 +97,18 @@ pub fn every_module_smoke_test() {
     joint_name.from_wire("joint") |> joint_name.value,
     sap_object_name.from_wire("sap") |> sap_object_name.value,
     etabs_object_name.from_wire("etabs") |> etabs_object_name.value,
+    batch_operation_id.from_wire("batch") |> batch_operation_id.value,
+    detail_instance_id.from_wire("detail") |> detail_instance_id.value,
+    definition_id.from_wire("definition") |> definition_id.value,
+    part_instance_id.from_wire("part") |> part_instance_id.value,
+    entity_id.from_wire("entity") |> entity_id.value,
+    annotation_id.from_wire("annotation") |> annotation_id.value,
+    port_name.from_wire("port") |> port_name.value,
+    weld_spec_id.from_wire("weld") |> weld_spec_id.value,
+    render_profile_id.from_wire("render") |> render_profile_id.value,
+    host_entity_id.from_wire("host") |> host_entity_id.value,
+    frame_id.from_wire("frame_id") |> frame_id.value,
+    parameter_name.from_wire("parameter") |> parameter_name.value,
   ]
   |> should.equal([
     "section",
@@ -95,5 +119,57 @@ pub fn every_module_smoke_test() {
     "joint",
     "sap",
     "etabs",
+    "batch",
+    "detail",
+    "definition",
+    "part",
+    "entity",
+    "annotation",
+    "port",
+    "weld",
+    "render",
+    "host",
+    "frame_id",
+    "parameter",
   ])
+}
+
+pub fn definition_id_round_trip_test() {
+  definition_id.from_wire("detail.baseplate.stiffened.v1")
+  |> definition_id.value
+  |> should.equal("detail.baseplate.stiffened.v1")
+}
+
+/// The Rust boundary owns the `detail.<family>.<slug>.vN` grammar; this brand
+/// carries any wire string through unchanged.
+pub fn definition_id_passes_through_non_grammar_values_test() {
+  definition_id.from_wire("Detail.Bad.Slug.v0")
+  |> definition_id.value
+  |> should.equal("Detail.Bad.Slug.v0")
+}
+
+pub fn definition_id_compare_ordering_test() {
+  definition_id.compare(
+    definition_id.from_wire("detail.a.x.v1"),
+    definition_id.from_wire("detail.b.x.v1"),
+  )
+  |> should.equal(order.Lt)
+  definition_id.compare(
+    definition_id.from_wire("detail.b.x.v1"),
+    definition_id.from_wire("detail.b.x.v1"),
+  )
+  |> should.equal(order.Eq)
+  definition_id.compare(
+    definition_id.from_wire("detail.c.x.v1"),
+    definition_id.from_wire("detail.b.x.v1"),
+  )
+  |> should.equal(order.Gt)
+}
+
+pub fn definition_id_structural_equality_test() {
+  {
+    definition_id.from_wire("detail.baseplate.stiffened.v1")
+    == definition_id.from_wire("detail.baseplate.stiffened.v1")
+  }
+  |> should.be_true
 }
