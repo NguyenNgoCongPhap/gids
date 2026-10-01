@@ -23,6 +23,7 @@
 | `gids/joint_guid` | `JointGuid` | `String` | `from_wire`, `value`, `compare` | GUID of a host point object, stable across renames where `JointName` is |
 | `gids/joint_name` | `JointName` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/load_case_id` | `LoadCaseId` | `Int` | `from_wire`, `value`, `compare` | - |
+| `gids/load_case_name` | `LoadCaseName` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/material_id` | `MaterialId` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/member_id` | `MemberId` | `Int` | `from_wire`, `value`, `compare` | - |
 | `gids/member_part_id` | `MemberPartId` | `Int` | `from_wire`, `value`, `compare` | - |

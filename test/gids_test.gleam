@@ -20,6 +20,7 @@ import gids/joint_family_id
 import gids/joint_guid
 import gids/joint_name
 import gids/load_case_id
+import gids/load_case_name
 import gids/material_id
 import gids/member_id
 import gids/member_part_id
@@ -102,6 +103,7 @@ pub fn every_module_smoke_test() {
     section_id.from_wire("section") |> section_id.value,
     material_id.from_wire("material") |> material_id.value,
     combo_name.from_wire("combo") |> combo_name.value,
+    load_case_name.from_wire("case") |> load_case_name.value,
     group_name.from_wire("group") |> group_name.value,
     frame_name.from_wire("frame") |> frame_name.value,
     joint_name.from_wire("joint") |> joint_name.value,
@@ -132,6 +134,7 @@ pub fn every_module_smoke_test() {
     "section",
     "material",
     "combo",
+    "case",
     "group",
     "frame",
     "joint",
