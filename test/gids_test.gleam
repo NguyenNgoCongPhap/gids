@@ -3,16 +3,21 @@
 
 import gids/annotation_id
 import gids/batch_operation_id
+import gids/bim_addition_name
 import gids/combo_name
 import gids/data_key
 import gids/definition_id
 import gids/detail_instance_id
 import gids/entity_id
 import gids/etabs_object_name
+import gids/frame_guid
 import gids/frame_id
 import gids/frame_name
+import gids/grid_line_name
 import gids/group_name
 import gids/host_entity_id
+import gids/joint_family_id
+import gids/joint_guid
 import gids/joint_name
 import gids/load_case_id
 import gids/material_id
@@ -27,6 +32,11 @@ import gids/port_name
 import gids/render_profile_id
 import gids/sap_object_name
 import gids/section_id
+import gids/snapshot_revision_id
+import gids/story_name
+import gids/template_name
+import gids/view_name
+import gids/view_option_preset_id
 import gids/weld_spec_id
 import gleam/order
 import gleeunit
@@ -109,6 +119,14 @@ pub fn every_module_smoke_test() {
     host_entity_id.from_wire("host") |> host_entity_id.value,
     frame_id.from_wire("frame_id") |> frame_id.value,
     parameter_name.from_wire("parameter") |> parameter_name.value,
+    grid_line_name.from_wire("grid") |> grid_line_name.value,
+    story_name.from_wire("story") |> story_name.value,
+    joint_family_id.from_wire("family") |> joint_family_id.value,
+    template_name.from_wire("template") |> template_name.value,
+    view_name.from_wire("view") |> view_name.value,
+    view_option_preset_id.from_wire("preset") |> view_option_preset_id.value,
+    bim_addition_name.from_wire("addition") |> bim_addition_name.value,
+    snapshot_revision_id.from_wire("revision") |> snapshot_revision_id.value,
   ]
   |> should.equal([
     "section",
@@ -131,7 +149,86 @@ pub fn every_module_smoke_test() {
     "host",
     "frame_id",
     "parameter",
+    "grid",
+    "story",
+    "family",
+    "template",
+    "view",
+    "preset",
+    "addition",
+    "revision",
   ])
+}
+
+pub fn grid_line_name_round_trip_test() {
+  grid_line_name.from_wire("B.5")
+  |> grid_line_name.value
+  |> should.equal("B.5")
+}
+
+pub fn grid_line_name_compare_ordering_test() {
+  grid_line_name.compare(
+    grid_line_name.from_wire("A"),
+    grid_line_name.from_wire("B"),
+  )
+  |> should.equal(order.Lt)
+  grid_line_name.compare(
+    grid_line_name.from_wire("B"),
+    grid_line_name.from_wire("B"),
+  )
+  |> should.equal(order.Eq)
+  grid_line_name.compare(
+    grid_line_name.from_wire("C"),
+    grid_line_name.from_wire("B"),
+  )
+  |> should.equal(order.Gt)
+}
+
+pub fn grid_line_name_structural_equality_test() {
+  { grid_line_name.from_wire("B.5") == grid_line_name.from_wire("B.5") }
+  |> should.be_true
+}
+
+pub fn story_name_compare_ordering_test() {
+  story_name.compare(story_name.from_wire("L1"), story_name.from_wire("L2"))
+  |> should.equal(order.Lt)
+  story_name.compare(story_name.from_wire("L2"), story_name.from_wire("L2"))
+  |> should.equal(order.Eq)
+  story_name.compare(story_name.from_wire("L3"), story_name.from_wire("L2"))
+  |> should.equal(order.Gt)
+}
+
+/// The Rust boundary refuses empty and padded names; these brands carry any
+/// wire string through unchanged.
+pub fn overlay_brands_pass_through_values_the_rust_boundary_refuses_test() {
+  [
+    grid_line_name.from_wire("") |> grid_line_name.value,
+    story_name.from_wire(" L2") |> story_name.value,
+    view_name.from_wire("elevation ") |> view_name.value,
+  ]
+  |> should.equal(["", " L2", "elevation "])
+}
+
+pub fn host_guids_round_trip_and_compare_test() {
+  frame_guid.from_wire("2f674053-cadb-4b5a-ab91-25b76bc5a4a8")
+  |> frame_guid.value
+  |> should.equal("2f674053-cadb-4b5a-ab91-25b76bc5a4a8")
+  joint_guid.from_wire("18d27ac4-4c40-4f45-a057-a61645c6c23b")
+  |> joint_guid.value
+  |> should.equal("18d27ac4-4c40-4f45-a057-a61645c6c23b")
+  joint_guid.compare(
+    joint_guid.from_wire("18d27ac4-4c40-4f45-a057-a61645c6c23b"),
+    joint_guid.from_wire("2f674053-cadb-4b5a-ab91-25b76bc5a4a8"),
+  )
+  |> should.equal(order.Lt)
+}
+
+pub fn snapshot_revision_id_structural_equality_test() {
+  {
+    snapshot_revision_id.from_wire("rev-7")
+    == snapshot_revision_id.from_wire("rev-7")
+  }
+  |> should.be_true
 }
 
 pub fn definition_id_round_trip_test() {
