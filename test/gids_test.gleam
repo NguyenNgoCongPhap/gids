@@ -30,6 +30,7 @@ import gids/operation_id
 import gids/parameter_name
 import gids/part_instance_id
 import gids/port_name
+import gids/process_id
 import gids/render_profile_id
 import gids/sap_object_name
 import gids/section_id
@@ -96,8 +97,9 @@ pub fn every_module_smoke_test() {
     node_id.from_wire(5) |> node_id.value,
     load_case_id.from_wire(6) |> load_case_id.value,
     mode_index.from_wire(7) |> mode_index.value,
+    process_id.from_wire(8) |> process_id.value,
   ]
-  |> should.equal([1, 2, 3, 4, 5, 6, 7])
+  |> should.equal([1, 2, 3, 4, 5, 6, 7, 8])
 
   [
     section_id.from_wire("section") |> section_id.value,

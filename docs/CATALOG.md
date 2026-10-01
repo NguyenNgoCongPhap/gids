@@ -33,6 +33,7 @@
 | `gids/parameter_name` | `ParameterName` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/part_instance_id` | `PartInstanceId` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/port_name` | `PortName` | `String` | `from_wire`, `value`, `compare` | - |
+| `gids/process_id` | `ProcessId` | `Int` | `from_wire`, `value`, `compare` | Operating-system process id of a running host. It names a process only |
 | `gids/render_profile_id` | `RenderProfileId` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/sap_object_name` | `SapObjectName` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/section_id` | `SectionId` | `String` | `from_wire`, `value`, `compare` | - |
