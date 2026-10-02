@@ -19,6 +19,8 @@ import gids/host_entity_id
 import gids/joint_family_id
 import gids/joint_guid
 import gids/joint_name
+import gids/link_guid
+import gids/link_name
 import gids/load_case_id
 import gids/load_case_name
 import gids/material_id
@@ -109,6 +111,7 @@ pub fn every_module_smoke_test() {
     group_name.from_wire("group") |> group_name.value,
     frame_name.from_wire("frame") |> frame_name.value,
     joint_name.from_wire("joint") |> joint_name.value,
+    link_name.from_wire("link") |> link_name.value,
     sap_object_name.from_wire("sap") |> sap_object_name.value,
     etabs_object_name.from_wire("etabs") |> etabs_object_name.value,
     batch_operation_id.from_wire("batch") |> batch_operation_id.value,
@@ -140,6 +143,7 @@ pub fn every_module_smoke_test() {
     "group",
     "frame",
     "joint",
+    "link",
     "sap",
     "etabs",
     "batch",
@@ -221,6 +225,9 @@ pub fn host_guids_round_trip_and_compare_test() {
   joint_guid.from_wire("18d27ac4-4c40-4f45-a057-a61645c6c23b")
   |> joint_guid.value
   |> should.equal("18d27ac4-4c40-4f45-a057-a61645c6c23b")
+  link_guid.from_wire("7c1e0b9a-3d52-4f0e-9a61-0b2c4d6e8f10")
+  |> link_guid.value
+  |> should.equal("7c1e0b9a-3d52-4f0e-9a61-0b2c4d6e8f10")
   joint_guid.compare(
     joint_guid.from_wire("18d27ac4-4c40-4f45-a057-a61645c6c23b"),
     joint_guid.from_wire("2f674053-cadb-4b5a-ab91-25b76bc5a4a8"),
