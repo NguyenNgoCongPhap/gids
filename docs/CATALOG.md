@@ -38,6 +38,7 @@
 | `gids/process_id` | `ProcessId` | `Int` | `from_wire`, `value`, `compare` | Operating-system process id of a running host. It names a process only |
 | `gids/render_profile_id` | `RenderProfileId` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/sap_object_name` | `SapObjectName` | `String` | `from_wire`, `value`, `compare` | - |
+| `gids/saved_run_id` | `SavedRunId` | `String` | `from_wire`, `value`, `compare` | Identity of one saved analysis-results run, a GUID minted by its caller. |
 | `gids/section_id` | `SectionId` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/snapshot_revision_id` | `SnapshotRevisionId` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/story_name` | `StoryName` | `String` | `from_wire`, `value`, `compare` | - |

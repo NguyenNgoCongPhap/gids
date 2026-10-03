@@ -35,6 +35,7 @@ import gids/port_name
 import gids/process_id
 import gids/render_profile_id
 import gids/sap_object_name
+import gids/saved_run_id
 import gids/section_id
 import gids/snapshot_revision_id
 import gids/story_name
@@ -134,6 +135,7 @@ pub fn every_module_smoke_test() {
     view_option_preset_id.from_wire("preset") |> view_option_preset_id.value,
     bim_addition_name.from_wire("addition") |> bim_addition_name.value,
     snapshot_revision_id.from_wire("revision") |> snapshot_revision_id.value,
+    saved_run_id.from_wire("saved-run") |> saved_run_id.value,
   ]
   |> should.equal([
     "section",
@@ -166,6 +168,7 @@ pub fn every_module_smoke_test() {
     "preset",
     "addition",
     "revision",
+    "saved-run",
   ])
 }
 
@@ -233,6 +236,22 @@ pub fn host_guids_round_trip_and_compare_test() {
     joint_guid.from_wire("2f674053-cadb-4b5a-ab91-25b76bc5a4a8"),
   )
   |> should.equal(order.Lt)
+}
+
+pub fn saved_run_id_round_trips_and_compares_test() {
+  saved_run_id.from_wire("0b9e4f1c-6a2d-4c3e-8f70-1d2c3b4a5e6f")
+  |> saved_run_id.value
+  |> should.equal("0b9e4f1c-6a2d-4c3e-8f70-1d2c3b4a5e6f")
+  saved_run_id.compare(
+    saved_run_id.from_wire("0b9e4f1c-6a2d-4c3e-8f70-1d2c3b4a5e6f"),
+    saved_run_id.from_wire("1b9e4f1c-6a2d-4c3e-8f70-1d2c3b4a5e6f"),
+  )
+  |> should.equal(order.Lt)
+  {
+    saved_run_id.from_wire("0b9e4f1c-6a2d-4c3e-8f70-1d2c3b4a5e6f")
+    == saved_run_id.from_wire("0b9e4f1c-6a2d-4c3e-8f70-1d2c3b4a5e6f")
+  }
+  |> should.be_true
 }
 
 pub fn snapshot_revision_id_structural_equality_test() {
