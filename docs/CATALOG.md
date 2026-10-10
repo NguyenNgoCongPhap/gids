@@ -40,6 +40,7 @@
 | `gids/sap_object_name` | `SapObjectName` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/saved_run_id` | `SavedRunId` | `String` | `from_wire`, `value`, `compare` | Identity of one saved analysis-results run, a GUID minted by its caller. |
 | `gids/section_id` | `SectionId` | `String` | `from_wire`, `value`, `compare` | - |
+| `gids/selection_record_id` | `SelectionRecordId` | `String` | `from_wire`, `value`, `compare` | One captured selection in the selection history, recent or saved. |
 | `gids/snapshot_revision_id` | `SnapshotRevisionId` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/story_name` | `StoryName` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/template_name` | `TemplateName` | `String` | `from_wire`, `value`, `compare` | - |

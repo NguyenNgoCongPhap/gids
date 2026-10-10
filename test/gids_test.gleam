@@ -37,6 +37,7 @@ import gids/render_profile_id
 import gids/sap_object_name
 import gids/saved_run_id
 import gids/section_id
+import gids/selection_record_id
 import gids/snapshot_revision_id
 import gids/story_name
 import gids/template_name
@@ -300,4 +301,26 @@ pub fn definition_id_structural_equality_test() {
     == definition_id.from_wire("detail.baseplate.stiffened.v1")
   }
   |> should.be_true
+}
+
+pub fn selection_record_id_round_trip_order_and_identity_test() {
+  let first =
+    selection_record_id.from_wire("0b9e4f1c-6a2d-4c3e-8f70-1d2c3b4a5e6f")
+  let equal =
+    selection_record_id.from_wire("0b9e4f1c-6a2d-4c3e-8f70-1d2c3b4a5e6f")
+  let last =
+    selection_record_id.from_wire("1b9e4f1c-6a2d-4c3e-8f70-1d2c3b4a5e6f")
+  selection_record_id.value(first)
+  |> should.equal("0b9e4f1c-6a2d-4c3e-8f70-1d2c3b4a5e6f")
+  selection_record_id.compare(first, last) |> should.equal(order.Lt)
+  selection_record_id.compare(first, equal) |> should.equal(order.Eq)
+  selection_record_id.compare(last, first) |> should.equal(order.Gt)
+  { first == equal } |> should.be_true
+  { first == last } |> should.be_false
+}
+
+pub fn selection_record_id_preserves_wire_text_rust_refuses_test() {
+  selection_record_id.from_wire("not-a-guid")
+  |> selection_record_id.value
+  |> should.equal("not-a-guid")
 }
