@@ -19,6 +19,7 @@
 | `gids/grid_line_name` | `GridLineName` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/group_name` | `GroupName` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/host_entity_id` | `HostEntityId` | `String` | `from_wire`, `value`, `compare` | - |
+| `gids/ifc_global_id` | `IfcGlobalId` | `String` | `from_wire`, `value`, `compare` | Case-sensitive compressed IFC GlobalId, bound to model content by the upstream record. |
 | `gids/joint_family_id` | `JointFamilyId` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/joint_guid` | `JointGuid` | `String` | `from_wire`, `value`, `compare` | GUID of a host point object, stable across renames where `JointName` is |
 | `gids/joint_name` | `JointName` | `String` | `from_wire`, `value`, `compare` | - |
@@ -30,6 +31,7 @@
 | `gids/member_id` | `MemberId` | `Int` | `from_wire`, `value`, `compare` | - |
 | `gids/member_part_id` | `MemberPartId` | `Int` | `from_wire`, `value`, `compare` | - |
 | `gids/mode_index` | `ModeIndex` | `Int` | `from_wire`, `value`, `compare` | - |
+| `gids/model_content_sha256` | `ModelContentSha256` | `String` | `from_wire`, `value`, `compare` | Model-content SHA-256 supplied as validated lowercase text by Rust. |
 | `gids/node_id` | `NodeId` | `Int` | `from_wire`, `value`, `compare` | - |
 | `gids/operation_id` | `OperationId` | `Int` | `from_wire`, `value`, `compare` | - |
 | `gids/parameter_name` | `ParameterName` | `String` | `from_wire`, `value`, `compare` | - |
