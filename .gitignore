@@ -29,3 +29,7 @@ Thumbs.db
 !.env.example
 *.pem
 *.key
+
+# Local gate bytecode and editor state.
+.serena/
+__pycache__/
