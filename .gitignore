@@ -4,10 +4,10 @@
 /build
 erl_crash.dump
 
-# Local-only project management — never publish
+# The owner-approved library rules and work history are versioned.
 /docs/*
 !/docs/CATALOG.md
-AGENTS.md
+!/docs/devlog/
 CLAUDE.md
 .claude/
 .codex/
