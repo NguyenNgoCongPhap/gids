@@ -38,6 +38,7 @@
 | `gids/part_instance_id` | `PartInstanceId` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/port_name` | `PortName` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/process_id` | `ProcessId` | `Int` | `from_wire`, `value`, `compare` | Operating-system process id of a running host. It names a process only |
+| `gids/project_connection_id` | `ProjectConnectionId` | `Int` | `from_wire`, `value`, `compare` | One connection of an open connection-design project, host-numbered. |
 | `gids/render_profile_id` | `RenderProfileId` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/sap_object_name` | `SapObjectName` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/saved_run_id` | `SavedRunId` | `String` | `from_wire`, `value`, `compare` | Identity of one saved analysis-results run, a GUID minted by its caller. |
