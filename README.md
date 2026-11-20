@@ -20,5 +20,5 @@ Rust owns validation and lowercase digest normalization; these mirrors preserve
 even malformed text supplied to their trusted seam. They never hash, mint IDs,
 look up a model, or add parsing policy. Rewrapping is total, with no local failure.
 Acceptance is round-trip/order/equality, the explicit malformed-text control and
-one generated catalog row per brand (45 total). Land core before these mirrors;
+one generated catalog row per brand (46 total). Land core before these mirrors;
 generated consumers require both revisions. Existing brands are unchanged.
