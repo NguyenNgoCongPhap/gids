@@ -45,6 +45,8 @@
 | `gids/section_id` | `SectionId` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/selection_record_id` | `SelectionRecordId` | `String` | `from_wire`, `value`, `compare` | One captured selection in the selection history, recent or saved. |
 | `gids/snapshot_revision_id` | `SnapshotRevisionId` | `String` | `from_wire`, `value`, `compare` | - |
+| `gids/source_capture_id` | `SourceCaptureId` | `String` | `from_wire`, `value`, `compare` | Nonsecret opaque lookup handle naming the exact displayed IFC or analysis capture. |
+| `gids/source_target_id` | `SourceTargetId` | `String` | `from_wire`, `value`, `compare` | Nonsecret opaque lookup handle naming a source choice. |
 | `gids/story_name` | `StoryName` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/template_name` | `TemplateName` | `String` | `from_wire`, `value`, `compare` | - |
 | `gids/view_name` | `ViewName` | `String` | `from_wire`, `value`, `compare` | - |

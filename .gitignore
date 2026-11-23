@@ -7,11 +7,13 @@ erl_crash.dump
 # Local-only project management — never publish
 /docs/*
 !/docs/CATALOG.md
-AGENTS.md
 CLAUDE.md
 .claude/
 .codex/
 .grok/
+.serena/
+.mcp.json
+_scratch/
 
 # OS / editor
 .DS_Store
