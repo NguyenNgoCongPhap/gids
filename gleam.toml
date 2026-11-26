@@ -10,7 +10,7 @@ description = "Opaque Gleam brands for structural entity identifiers crossing ty
 repository = { type = "github", user = "NguyenNgoCongPhap", repo = "gids" }
 
 [dependencies]
-gleam_stdlib = "1.0.3"
+gleam_stdlib = "1.2.0"
 
 [dev-dependencies]
 gleeunit = "1.11.0"
